@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-permissify"
-version = "1.0.1"
+version = "1.0.2"
 description = "Django Object Permissions"
 authors = ["Daniel Pinto <dmp593@gmail.com>"]
 license = "MIT"
@@ -32,7 +32,8 @@ packages = [
     { include = "permissify/**/*.py" }
 ]
 
-exclude = [ "permissify/migrations/[!__init__]*.py" ]
+# rollback: migrations must be included
+# exclude = [ "permissify/migrations/[!__init__]*.py" ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
