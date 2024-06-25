@@ -1,20 +1,41 @@
 [tool.poetry]
 name = "django-permissify"
-version = "0.1.0"
+version = "1.0.0"
 description = "Django Object Permissions"
 authors = ["Daniel Pinto <dmp593@gmail.com>"]
 license = "MIT"
 repository = "https://github.com/dmp593/django-permissify"
 readme = "README.md"
 package-mode = true
-packages = [{include = "permissify/**/*.py"}]
+keywords = ["Django", "Permissions", "Object Permissions"]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Application Frameworks"
+]
+packages = [
+    { include = "permissify/**/*.py" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 Django = "^5.0.3"
 
 [tool.poetry.group.dev.dependencies]
-django-extensions = "^3.2.3"
 coverage = "^7.5.4"
 
 [build-system]
