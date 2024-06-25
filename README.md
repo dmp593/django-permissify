@@ -131,17 +131,23 @@ python manage.py remove_role <role_name>
 ```
 
 #### Why Use a Role Model Instead of Just the Group Model if they are identical tables?
-Separate Logical Concerns of Groups vs Roles:
+
+
+##### Separate Logical Concerns of Groups vs Roles
 
 Groups: Typically used to manage permissions for a collection of users who share common access needs. For example, a "Editors" group might have permissions to edit articles.
+
 Roles: Often represent a user's position or function within an organization, such as "Manager" or "Employee". Roles can be used to encapsulate a set of permissions that are tied to a specific job function.
-Additional Model for Other Types of Permissions:
+
+##### Additional Model for Other Types of Permissions
 
 Having a separate Role model allows for more granular control over permissions. For instance, in a subscription-based application, roles can be used to determine if a user has paid for a subscription, while groups can be used to manage specific permissions within the application.
-Business Enterprises Preference:
+
+##### Business Enterprises Preference
 
 Many enterprises prefer the concept of roles because it aligns more closely with organizational structures. Roles can be used to define job functions and responsibilities, making it easier to manage permissions based on an employee's role within the company.
-Flexibility and Extensibility:
+
+##### Flexibility and Extensibility
 
 Using a separate Role model provides flexibility to extend the model with additional fields and methods that are specific to roles. This can include custom logic for role-based access control, additional metadata, or integration with other systems.
 
