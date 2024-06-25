@@ -144,3 +144,11 @@ Many enterprises prefer the concept of roles because it aligns more closely with
 Flexibility and Extensibility:
 
 Using a separate Role model provides flexibility to extend the model with additional fields and methods that are specific to roles. This can include custom logic for role-based access control, additional metadata, or integration with other systems.
+
+---
+
+Thank you for reading!
+
+If you liked this library you can support me by [buying me a coffee](https://www.buymeacoffee.com/dmp593).
+
+<img src="bmc_qr.png" alt="https://www.buymeacoffee.com/dmp593" width="200"/>
