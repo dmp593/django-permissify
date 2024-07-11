@@ -8,14 +8,15 @@ Django Permissify is a reusable Django app that provides a robust and flexible w
 - Manage roles and permissions through Django admin.
 - Integrates seamlessly with Django's authentication system.
 - Provides management commands for adding and removing roles.
-
+- Integrates with Django Rest Framework (DRF) to provide object-level permissions for API views.
+- 
 ## Installation
 
 1. Install the package using pip:
 
     ```bash
     pip install django-permissify
-    ```
+    ``` 
 
 2. Add `permissify` to your `INSTALLED_APPS` in your Django settings:
 
@@ -219,6 +220,52 @@ class FooUser(ExternalAppUser, ComplexStuffUser, RolePermissionMixin, auth_model
     # some stuff...
     ...
 ```
+
+
+### Using with Django Rest Framework (DRF)
+
+Django Permissify provides object-level permissions for API `viewsets` in DRF through its permission classes.
+
+#### Permission Classes
+
+- `PermissifyObjectPermissions`: Ensures that the user has the required object-level permissions
+- `PermissifyObjectPermissionsOrAnonReadOnly`: Allows read-only access for anonymous users, but requires object-level permissions for other actions.
+
+
+```python
+# views.py
+
+from django.contrib.auth import get_user_model
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from permissify.drf.permissions import PermissifyObjectPermissions, PermissifyObjectPermissionsOrAnonReadOnly
+from myapp.serializers import UserSerializer
+
+
+User = get_user_model()
+
+
+class MockViewSet(viewsets.ModelViewSet):
+    permission_classes = [PermissifyObjectPermissions]
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def list(self, request, *args, **kwargs):
+        return Response({'detail': 'success'}, status=status.HTTP_200_OK)
+
+    
+class MockViewAnonReadOnlySet(viewsets.ModelViewSet):
+    permission_classes = [PermissifyObjectPermissionsOrAnonReadOnly]
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def list(self, request, *args, **kwargs):
+        return Response({'detail': 'success'}, status=status.HTTP_200_OK)
+
+    def create(self, request, *args, **kwargs):
+        return Response({'detail': 'success'}, status=status.HTTP_201_CREATED)
+```
+
 
 ### Management Commands
 

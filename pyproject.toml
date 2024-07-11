@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-permissify"
-version = "1.0.3"
+version = "1.0.5"
 description = "Django Object Permissions"
 authors = ["Daniel Pinto <dmp593@gmail.com>"]
 license = "MIT"
